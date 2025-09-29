@@ -91,7 +91,7 @@ async function scrapeSite() {
     }
     process.on("SIGINT", handleInterrupt);
     process.on("SIGTERM", handleInterrupt);
-    browser = await puppeteer.launch({ headless: false, defaultViewport: { width: 1280, height: 800 } });
+    browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox", "--disable-setuid-sandbox"], defaultViewport: { width: 1280, height: 800 } });
     let currentURL: string | null = startingURL;
     let pageNum = 1;
     while (currentURL && !interrupted) {
